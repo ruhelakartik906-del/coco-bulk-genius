@@ -7,7 +7,6 @@ import {
   ArrowRight,
   BriefcaseBusiness,
   Building2,
-  Check,
   ChevronDown,
   ChevronUp,
   CircleCheckBig,
@@ -23,16 +22,24 @@ import {
   Wind,
   Zap,
 } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
-import circularPurifier from "@/assets/coco-circular-purifier.png.asset.json";
-import desktopPurifier from "@/assets/coco-desktop-purifier.png.asset.json";
-import darkWoodPurifier from "@/assets/coco-smart-dark-wood.png.asset.json";
-import lightWoodPurifier from "@/assets/coco-smart-light-wood.png.asset.json";
-import whitePurifier from "@/assets/coco-smart-white.png.asset.json";
+import circularPurifierAsset from "@/assets/coco-circular-purifier.png.asset.json";
+import desktopPurifierAsset from "@/assets/coco-desktop-purifier.png.asset.json";
+import darkWoodPurifierAsset from "@/assets/coco-smart-dark-wood.png.asset.json";
+import lightWoodPurifierAsset from "@/assets/coco-smart-light-wood.png.asset.json";
+import whitePurifierAsset from "@/assets/coco-smart-white.png.asset.json";
+
+type AssetPointer = { url: string };
+
+const circularPurifier = circularPurifierAsset as AssetPointer;
+const desktopPurifier = desktopPurifierAsset as AssetPointer;
+const darkWoodPurifier = darkWoodPurifierAsset as AssetPointer;
+const lightWoodPurifier = lightWoodPurifierAsset as AssetPointer;
+const whitePurifier = whitePurifierAsset as AssetPointer;
 
 const enquirySchema = z.object({
   fullName: z.string().trim().min(2, "Please enter your full name").max(100),
@@ -49,9 +56,13 @@ const enquirySchema = z.object({
   product: z.string().trim().min(1, "Please select a product"),
   quantityRequired: z.coerce.number().int().gt(0, "Quantity must be greater than zero"),
   deliveryTimeline: z.string().trim().min(1, "Please select a delivery timeline"),
-  additionalRequirements: z.string().trim().max(1000, "Please keep additional requirements under 1000 characters").optional(),
-  agreement: z.literal(true, {
-    errorMap: () => ({ message: "You must agree to be contacted regarding this enquiry" }),
+  additionalRequirements: z
+    .string()
+    .trim()
+    .max(1000, "Please keep additional requirements under 1000 characters")
+    .optional(),
+  agreement: z.boolean().refine((value) => value, {
+    message: "You must agree to be contacted regarding this enquiry",
   }),
 });
 
@@ -62,7 +73,7 @@ type Product = {
   name: string;
   description: string;
   features: string[];
-  image: { url: string };
+  image: AssetPointer;
   alt: string;
   defaultQuantity: number;
 };
@@ -72,7 +83,7 @@ const products: Product[] = [
     id: "smart-white",
     name: "SMART Air Purifier",
     description: "Smart HEPA air purifier for homes and offices.",
-    features: ["HEPA H13", "Smart AQI", "Wi-Fi", "Low Noise", "Coverage up to 500 sq.ft."],
+    features: ["HEPA H13", "Smart AQI", "Wi‑Fi", "Low Noise", "Coverage up to 500 sq.ft."],
     image: whitePurifier,
     alt: "COCO SMART Air Purifier in white finish on a wooden table",
     defaultQuantity: 25,
@@ -120,7 +131,7 @@ const stats = [
   { value: "500+", label: "Units Per Order" },
   { value: "Pan India", label: "Delivery Network" },
   { value: "24 Hours", label: "Average Quote Response" },
-];
+] as const;
 
 const benefits = [
   { icon: Wind, label: "HEPA H13 Filtration" },
@@ -129,7 +140,7 @@ const benefits = [
   { icon: Waves, label: "Smart Airflow" },
   { icon: MonitorCog, label: "Real-Time AQI Monitoring" },
   { icon: Leaf, label: "AI Air Purification" },
-];
+] as const;
 
 const industries = [
   { icon: BriefcaseBusiness, label: "Corporate Offices" },
@@ -142,7 +153,7 @@ const industries = [
   { icon: Building2, label: "Co-working Spaces" },
   { icon: Building2, label: "Government Institutions" },
   { icon: Hospital, label: "Healthcare Facilities" },
-];
+] as const;
 
 const containerVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -151,7 +162,7 @@ const containerVariants = {
     y: 0,
     transition: {
       duration: 0.7,
-      ease: [0.22, 1, 0.36, 1],
+      ease: "easeOut",
       staggerChildren: 0.08,
     },
   },
@@ -159,7 +170,11 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: "easeOut" },
+  },
 };
 
 function SectionHeading({
@@ -175,14 +190,17 @@ function SectionHeading({
     <div className="max-w-3xl">
       <p className="eyebrow">{kicker}</p>
       <h2 className="mt-4 text-4xl leading-none text-foreground sm:text-5xl lg:text-6xl">{title}</h2>
-      {description ? <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">{description}</p> : null}
+      {description ? (
+        <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+          {description}
+        </p>
+      ) : null}
     </div>
   );
 }
 
 function ErrorText({ message }: { message?: string }) {
   if (!message) return null;
-
   return <p className="mt-2 text-sm text-destructive">{message}</p>;
 }
 
@@ -207,7 +225,7 @@ function ProductCard({
       <div className="relative aspect-[4/4] overflow-hidden bg-surface-strong/70 p-5">
         <motion.img
           whileHover={{ scale: 1.04 }}
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           src={product.image.url}
           alt={product.alt}
           loading="lazy"
@@ -304,6 +322,8 @@ export function CocoBulkOrdersPage() {
     defaultValues,
   });
 
+  const productRegister = register("product");
+
   useEffect(() => {
     if (!successOpen) return;
 
@@ -331,8 +351,11 @@ export function CocoBulkOrdersPage() {
     };
   }, []);
 
-  const scrollToSection = (ref: React.RefObject<HTMLElement | null>) => {
-    ref.current?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+  const scrollToSection = (ref: RefObject<HTMLElement | null>) => {
+    ref.current?.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      block: "start",
+    });
   };
 
   const handleQuantityChange = (productId: string, direction: "up" | "down") => {
@@ -346,10 +369,17 @@ export function CocoBulkOrdersPage() {
     const quantity = productQuantities[product.id];
 
     setValue("product", product.name, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
-    setValue("quantityRequired", quantity, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
+    setValue("quantityRequired", quantity, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
     setHighlightProductField(true);
-    productFieldRef.current?.focus({ preventScroll: true });
     scrollToSection(formSectionRef);
+
+    window.setTimeout(() => {
+      productFieldRef.current?.focus({ preventScroll: true });
+    }, prefersReducedMotion ? 0 : 450);
 
     if (highlightTimerRef.current) {
       window.clearTimeout(highlightTimerRef.current);
@@ -372,7 +402,10 @@ export function CocoBulkOrdersPage() {
 
   return (
     <div className="bg-background text-foreground">
-      <Link to="/" className="button-secondary fixed left-4 top-4 z-50 px-4 py-3 text-xs sm:left-6 sm:top-6 sm:text-sm">
+      <Link
+        to="/"
+        className="button-secondary fixed left-4 top-4 z-50 px-4 py-3 text-xs sm:left-6 sm:top-6 sm:text-sm"
+      >
         <ArrowLeft className="h-4 w-4" />
         Back to Home
       </Link>
@@ -396,15 +429,23 @@ export function CocoBulkOrdersPage() {
                 >
                   Bulk Supply for Businesses & Institutions
                 </motion.h1>
-                <motion.p variants={itemVariants} className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-                  Equip your office, hotel, clinic, school or commercial space with premium air purification solutions at volume pricing.
+                <motion.p
+                  variants={itemVariants}
+                  className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg"
+                >
+                  Equip your office, hotel, clinic, school or commercial space with premium air purification
+                  solutions at volume pricing.
                 </motion.p>
                 <motion.div variants={itemVariants} className="mt-8 flex flex-wrap gap-3">
                   <button type="button" onClick={() => scrollToSection(formSectionRef)} className="button-primary">
                     Request Quote
                     <ArrowRight className="h-4 w-4" />
                   </button>
-                  <button type="button" onClick={() => scrollToSection(productSectionRef)} className="button-secondary">
+                  <button
+                    type="button"
+                    onClick={() => scrollToSection(productSectionRef)}
+                    className="button-secondary"
+                  >
                     Browse Products
                   </button>
                 </motion.div>
@@ -416,7 +457,8 @@ export function CocoBulkOrdersPage() {
                   <div className="panel bg-surface px-4 py-3 sm:max-w-52">
                     <p className="eyebrow">Trusted Turnaround</p>
                     <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                      Dedicated B2B support, curated recommendations and rapid quotes for project-scale procurement.
+                      Dedicated B2B support, curated recommendations and rapid quotes for project-scale
+                      procurement.
                     </p>
                   </div>
                   <div className="inline-flex items-center gap-2 self-start rounded-full border border-border bg-card px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground shadow-[var(--shadow-soft)]">
@@ -427,7 +469,7 @@ export function CocoBulkOrdersPage() {
                 <div className="relative mt-5 aspect-[5/4] overflow-hidden rounded-[calc(var(--radius)-2px)] bg-surface-strong/70">
                   <motion.img
                     whileHover={{ scale: 1.03 }}
-                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.45, ease: "easeOut" }}
                     src={whitePurifier.url}
                     alt="COCO SMART Air Purifier in white finish"
                     className="h-full w-full object-contain p-6 sm:p-8"
@@ -450,7 +492,9 @@ export function CocoBulkOrdersPage() {
               {stats.map((stat) => (
                 <motion.article key={stat.label} variants={itemVariants} className="panel panel-hover px-6 py-7">
                   <p className="text-3xl leading-none text-foreground sm:text-[2rem]">{stat.value}</p>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">{stat.label}</p>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                    {stat.label}
+                  </p>
                 </motion.article>
               ))}
             </div>
@@ -473,7 +517,10 @@ export function CocoBulkOrdersPage() {
               description="A curated B2B collection for premium interiors, hospitality environments, healthcare settings and focused workspaces."
             />
 
-            <motion.div variants={containerVariants} className="-mx-6 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0 lg:grid-cols-5">
+            <motion.div
+              variants={containerVariants}
+              className="-mx-6 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0 lg:grid-cols-5"
+            >
               {products.map((product) => (
                 <ProductCard
                   key={product.id}
@@ -501,7 +548,8 @@ export function CocoBulkOrdersPage() {
                 <p className="eyebrow justify-center">Why Choose COCO</p>
                 <h2 className="mt-4 text-4xl leading-none text-foreground sm:text-5xl">Built for performance.</h2>
                 <p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">
-                  Medical-grade filtration combined with premium design, low-noise airflow and dependable deployment support for modern commercial spaces.
+                  Medical-grade filtration combined with premium design, low-noise airflow and dependable
+                  deployment support for modern commercial spaces.
                 </p>
               </div>
 
@@ -510,11 +558,17 @@ export function CocoBulkOrdersPage() {
                   const Icon = benefit.icon;
 
                   return (
-                    <motion.div key={benefit.label} variants={itemVariants} className="panel panel-hover flex flex-col items-center gap-4 px-4 py-6 text-center">
+                    <motion.div
+                      key={benefit.label}
+                      variants={itemVariants}
+                      className="panel panel-hover flex flex-col items-center gap-4 px-4 py-6 text-center"
+                    >
                       <div className="grid h-14 w-14 place-items-center rounded-full bg-surface-strong text-foreground shadow-[var(--shadow-soft)]">
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">{benefit.label}</p>
+                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                        {benefit.label}
+                      </p>
                     </motion.div>
                   );
                 })}
@@ -550,7 +604,7 @@ export function CocoBulkOrdersPage() {
                       className="panel panel-hover flex items-center gap-3 px-4 py-4"
                     >
                       <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-surface-strong text-foreground">
-                        <Icon className="h-4.5 w-4.5" aria-hidden="true" />
+                        <Icon className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
                       </div>
                       <p className="min-w-0 text-sm font-semibold text-foreground">{industry.label}</p>
                     </motion.article>
@@ -559,7 +613,12 @@ export function CocoBulkOrdersPage() {
               </div>
             </motion.div>
 
-            <motion.section ref={formSectionRef} variants={itemVariants} aria-labelledby="bulk-enquiry-heading" className="panel p-6 sm:p-8 lg:p-10">
+            <motion.section
+              ref={formSectionRef}
+              variants={itemVariants}
+              aria-labelledby="bulk-enquiry-heading"
+              className="panel p-6 sm:p-8 lg:p-10"
+            >
               <div className="mb-8">
                 <p className="eyebrow">Request a Quote</p>
                 <h2 id="bulk-enquiry-heading" className="mt-4 text-4xl leading-none text-foreground sm:text-5xl">
@@ -648,13 +707,15 @@ export function CocoBulkOrdersPage() {
                   </label>
                   <select
                     id="product"
+                    name={productRegister.name}
+                    onBlur={productRegister.onBlur}
+                    onChange={productRegister.onChange}
                     ref={(element) => {
                       productFieldRef.current = element;
-                      register("product").ref(element);
+                      productRegister.ref(element);
                     }}
                     aria-invalid={Boolean(errors.product)}
                     className={`field-luxe mt-2 appearance-none transition-all ${highlightProductField ? "ring-2 ring-ring shadow-[var(--shadow-lift)]" : ""}`}
-                    {...register("product")}
                   >
                     <option value="">Select product</option>
                     {products.map((product) => (
@@ -723,11 +784,16 @@ export function CocoBulkOrdersPage() {
                 </div>
 
                 <div className="md:col-span-2 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-                  <button type="submit" disabled={isSubmitting} className="button-primary min-w-52 disabled:cursor-not-allowed disabled:opacity-70">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="button-primary min-w-52 disabled:cursor-not-allowed disabled:opacity-70"
+                  >
                     {isSubmitting ? "Submitting..." : "Request Bulk Quote"}
                   </button>
                   <p className="max-w-sm text-sm leading-6 text-muted-foreground">
-                    Your enquiry is reviewed by our dedicated B2B team for pricing, lead times and deployment planning.
+                    Your enquiry is reviewed by our dedicated B2B team for pricing, lead times and deployment
+                    planning.
                   </p>
                 </div>
               </form>
@@ -753,10 +819,10 @@ export function CocoBulkOrdersPage() {
                   initial={{ opacity: 0, scale: 0.96, y: 16 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.96, y: 16 }}
-                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                   className="panel fixed left-1/2 top-1/2 z-[80] w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 -translate-y-1/2 p-8 text-center sm:p-10"
                 >
-                  <div className="mx-auto grid h-18 w-18 place-items-center rounded-full bg-surface-strong text-success shadow-[var(--shadow-soft)]">
+                  <div className="mx-auto grid h-[4.5rem] w-[4.5rem] place-items-center rounded-full bg-surface-strong text-success shadow-[var(--shadow-soft)]">
                     <CircleCheckBig className="h-9 w-9" aria-hidden="true" />
                   </div>
                   <Dialog.Title className="mt-6 text-4xl leading-none text-foreground sm:text-5xl">
