@@ -162,7 +162,6 @@ const containerVariants = {
     y: 0,
     transition: {
       duration: 0.7,
-      ease: "easeOut",
       staggerChildren: 0.08,
     },
   },
@@ -173,7 +172,7 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: "easeOut" },
+    transition: { duration: 0.55 },
   },
 };
 
@@ -225,7 +224,7 @@ function ProductCard({
       <div className="relative aspect-[4/4] overflow-hidden bg-surface-strong/70 p-5">
         <motion.img
           whileHover={{ scale: 1.04 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4 }}
           src={product.image.url}
           alt={product.alt}
           loading="lazy"
@@ -469,7 +468,7 @@ export function CocoBulkOrdersPage() {
                 <div className="relative mt-5 aspect-[5/4] overflow-hidden rounded-[calc(var(--radius)-2px)] bg-surface-strong/70">
                   <motion.img
                     whileHover={{ scale: 1.03 }}
-                    transition={{ duration: 0.45, ease: "easeOut" }}
+                    transition={{ duration: 0.45 }}
                     src={whitePurifier.url}
                     alt="COCO SMART Air Purifier in white finish"
                     className="h-full w-full object-contain p-6 sm:p-8"
@@ -819,7 +818,7 @@ export function CocoBulkOrdersPage() {
                   initial={{ opacity: 0, scale: 0.96, y: 16 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.96, y: 16 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  transition={{ duration: 0.3 }}
                   className="panel fixed left-1/2 top-1/2 z-[80] w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 -translate-y-1/2 p-8 text-center sm:p-10"
                 >
                   <div className="mx-auto grid h-[4.5rem] w-[4.5rem] place-items-center rounded-full bg-surface-strong text-success shadow-[var(--shadow-soft)]">
