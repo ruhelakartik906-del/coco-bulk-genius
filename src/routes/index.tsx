@@ -1,8 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
-import whitePurifier from "@/assets/coco-smart-white.png.asset.json";
+import whitePurifierAsset from "@/assets/coco-smart-white.png.asset.json";
+
+type AssetPointer = { url: string };
+const whitePurifier = whitePurifierAsset as AssetPointer;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,7 +32,7 @@ function Index() {
         <motion.section
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7 }}
           className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]"
         >
           <div>
@@ -38,7 +41,8 @@ function Index() {
               Premium air purification for modern spaces.
             </h1>
             <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
-              Refined design, cleaner air, and a dedicated B2B ordering experience for offices, hospitality, healthcare and institutions.
+              Refined design, cleaner air, and a dedicated B2B ordering experience for offices,
+              hospitality, healthcare and institutions.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/bulk-orders" className="button-primary">
@@ -62,3 +66,4 @@ function Index() {
     </main>
   );
 }
+
