@@ -206,7 +206,7 @@ export function CocoBulkOrdersPage() {
           </p>
           <h1
             className="mt-5 max-w-4xl text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-[64px]"
-            style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+            style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
           >
             Bulk Supply for Businesses &amp; Institutions
           </h1>
@@ -231,7 +231,7 @@ export function CocoBulkOrdersPage() {
             >
               <div
                 className="text-3xl tracking-tight sm:text-4xl"
-                style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+                style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
               >
                 {s.value}
               </div>
@@ -251,7 +251,7 @@ export function CocoBulkOrdersPage() {
               </p>
               <h2
                 className="mt-3 text-3xl tracking-tight sm:text-4xl"
-                style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+                style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
               >
                 Volume Pricing
               </h2>
@@ -316,7 +316,7 @@ export function CocoBulkOrdersPage() {
           </p>
           <h2
             className="mx-auto mt-4 max-w-3xl text-3xl tracking-tight sm:text-5xl"
-            style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+            style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
           >
             Built for Performance
           </h2>
@@ -355,7 +355,7 @@ export function CocoBulkOrdersPage() {
             </p>
             <h2
               className="mt-4 text-4xl tracking-tight sm:text-5xl"
-              style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+              style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
             >
               Every professional space.
             </h2>
@@ -403,7 +403,7 @@ export function CocoBulkOrdersPage() {
             </p>
             <h2
               className="mt-3 text-3xl tracking-tight sm:text-4xl"
-              style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+              style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
             >
               Request a Quote
             </h2>
@@ -510,7 +510,7 @@ export function CocoBulkOrdersPage() {
               </div>
               <h3
                 className="mt-6 text-3xl tracking-tight"
-                style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+                style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
               >
                 Quote Submitted Successfully
               </h3>
@@ -520,7 +520,7 @@ export function CocoBulkOrdersPage() {
               </p>
               <div
                 className="mt-2 text-5xl tabular-nums"
-                style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+                style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
               >
                 {count}
               </div>
