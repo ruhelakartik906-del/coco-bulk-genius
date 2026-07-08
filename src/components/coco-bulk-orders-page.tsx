@@ -188,16 +188,8 @@ export function CocoBulkOrdersPage() {
   return (
     <main className="min-h-dvh bg-[#F8F6F2] text-[#1c1a17]">
       <div className="mx-auto w-full max-w-[1280px] px-5 py-8 sm:px-8 sm:py-10">
-        {/* Back button */}
-        <div className="mb-10">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-2 text-xs font-medium text-[#1c1a17] backdrop-blur transition hover:bg-white"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            Back to Home
-          </Link>
-        </div>
+
+
 
         {/* Section 1 — Intro */}
         <section className="pb-12">
