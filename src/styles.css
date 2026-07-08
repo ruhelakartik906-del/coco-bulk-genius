@@ -53,8 +53,7 @@
 }
 
 :root {
-  --font-manrope: "Manrope", sans-serif;
-  --font-cormorant: "Cormorant Garamond", serif;
+  --font-poppins: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --radius: 1.25rem;
   --background: oklch(0.979 0.006 79.53);
   --foreground: oklch(0.249 0.023 33.86);
