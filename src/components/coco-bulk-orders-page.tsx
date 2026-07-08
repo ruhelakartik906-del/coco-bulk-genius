@@ -1,8 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  ArrowLeft,
   Check,
   Cpu,
   Gauge,
@@ -188,16 +187,8 @@ export function CocoBulkOrdersPage() {
   return (
     <main className="min-h-dvh bg-[#F8F6F2] text-[#1c1a17]">
       <div className="mx-auto w-full max-w-[1280px] px-5 py-8 sm:px-8 sm:py-10">
-        {/* Back button */}
-        <div className="mb-10">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-2 text-xs font-medium text-[#1c1a17] backdrop-blur transition hover:bg-white"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            Back to Home
-          </Link>
-        </div>
+
+
 
         {/* Section 1 — Intro */}
         <section className="pb-12">
@@ -206,7 +197,7 @@ export function CocoBulkOrdersPage() {
           </p>
           <h1
             className="mt-5 max-w-4xl text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-[64px]"
-            style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+            style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
           >
             Bulk Supply for Businesses &amp; Institutions
           </h1>
@@ -231,7 +222,7 @@ export function CocoBulkOrdersPage() {
             >
               <div
                 className="text-3xl tracking-tight sm:text-4xl"
-                style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+                style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
               >
                 {s.value}
               </div>
@@ -251,7 +242,7 @@ export function CocoBulkOrdersPage() {
               </p>
               <h2
                 className="mt-3 text-3xl tracking-tight sm:text-4xl"
-                style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+                style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
               >
                 Volume Pricing
               </h2>
@@ -316,7 +307,7 @@ export function CocoBulkOrdersPage() {
           </p>
           <h2
             className="mx-auto mt-4 max-w-3xl text-3xl tracking-tight sm:text-5xl"
-            style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+            style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
           >
             Built for Performance
           </h2>
@@ -355,7 +346,7 @@ export function CocoBulkOrdersPage() {
             </p>
             <h2
               className="mt-4 text-4xl tracking-tight sm:text-5xl"
-              style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+              style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
             >
               Every professional space.
             </h2>
@@ -403,7 +394,7 @@ export function CocoBulkOrdersPage() {
             </p>
             <h2
               className="mt-3 text-3xl tracking-tight sm:text-4xl"
-              style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+              style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
             >
               Request a Quote
             </h2>
@@ -510,7 +501,7 @@ export function CocoBulkOrdersPage() {
               </div>
               <h3
                 className="mt-6 text-3xl tracking-tight"
-                style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+                style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
               >
                 Quote Submitted Successfully
               </h3>
@@ -520,7 +511,7 @@ export function CocoBulkOrdersPage() {
               </p>
               <div
                 className="mt-2 text-5xl tabular-nums"
-                style={{ fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}
+                style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
               >
                 {count}
               </div>

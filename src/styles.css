@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: var(--font-manrope);
-  --font-display: var(--font-cormorant);
+  --font-sans: var(--font-poppins);
+  --font-display: var(--font-poppins);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -53,8 +53,7 @@
 }
 
 :root {
-  --font-manrope: "Manrope", sans-serif;
-  --font-cormorant: "Cormorant Garamond", serif;
+  --font-poppins: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --radius: 1.25rem;
   --background: oklch(0.979 0.006 79.53);
   --foreground: oklch(0.249 0.023 33.86);
@@ -133,7 +132,7 @@
     min-height: 100dvh;
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: var(--font-manrope);
+    font-family: var(--font-poppins);
     text-rendering: optimizeLegibility;
   }
 
@@ -143,9 +142,9 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-cormorant);
+    font-family: var(--font-poppins);
     font-weight: 600;
-    letter-spacing: 0;
+    letter-spacing: -0.01em;
   }
 
   input,
