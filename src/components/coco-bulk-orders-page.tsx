@@ -152,6 +152,9 @@ export function CocoBulkOrdersPage() {
           <div className="pointer-events-none absolute right-0 top-24 -z-0 h-96 w-96 rounded-full bg-gradient-to-br from-[#d4e4dc] to-transparent opacity-60 blur-3xl" />
 
           <div className="relative">
+            <a href="/" className="mb-8 inline-flex items-center justify-center rounded-2xl bg-white/60 p-3 shadow-sm backdrop-blur">
+              <img src={cocoLogo.url} alt="COCO" className="h-16 w-16 rounded-md object-contain sm:h-20 sm:w-20" />
+            </a>
             <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3.5 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#5b5650] backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
               B2B · Volume Orders
