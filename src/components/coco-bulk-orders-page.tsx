@@ -164,7 +164,7 @@ export function CocoBulkOrdersPage() {
               <span className="italic text-[#5b5650]">at scale.</span>
             </h1>
             <p className="mt-6 max-w-xl text-[15.5px] leading-[1.7] text-[#4a4640]">
-              Equip your workspace, hotel, hospital or facility with certified COCO air
+              Equip your workspace, hotel, hospital or facility with certified air
               purification. Volume pricing, dedicated account manager, and rapid
               PAN-India dispatch — engineered for institutional scale.
             </p>
