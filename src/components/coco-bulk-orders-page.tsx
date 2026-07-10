@@ -55,7 +55,7 @@ const pricingRows = [
   { no: "02", model: "SMART Purifier", colour: "Light Wood", mrp: "₹26,999", discount: "38%", p1: "₹24,299", p50: "₹21,599", p100: "₹19,439", p500: "₹16,739", img: smartLightWood.url },
   { no: "03", model: "SMART Purifier", colour: "Dark Wood", mrp: "₹26,999", discount: "38%", p1: "₹24,299", p50: "₹21,599", p100: "₹19,439", p500: "₹16,739", img: smartDarkWood.url },
   { no: "04", model: "Circular Purifier", colour: "White", mrp: "₹18,999", discount: "40%", p1: "₹16,999", p50: "₹14,999", p100: "₹13,299", p500: "₹11,399", img: circularPurifier.url },
-  { no: "05", model: "Desktop Purifier", colour: "White", mrp: "₹9,999", discount: "45%", p1: "₹8,999", p50: "₹7,499", p100: "₹6,499", img: circularPurifier.url, p500: "₹5,499" },
+  { no: "05", model: "Desktop Purifier", colour: "White", mrp: "₹9,999", discount: "45%", p1: "₹8,999", p50: "₹7,499", p100: "₹6,499", img: desktopPurifier.url, p500: "₹5,499" },
 ];
 
 const features = [
