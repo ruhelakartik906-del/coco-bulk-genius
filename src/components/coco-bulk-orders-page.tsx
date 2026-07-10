@@ -152,7 +152,9 @@ export function CocoBulkOrdersPage() {
             <img src={cocoLogo.url} alt="COCO" className="h-11 w-11 rounded-md object-contain sm:h-14 sm:w-14" />
           </a>
           <a
-            href="/"
+            href="https://www.cocoairpurifier.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-black/15 bg-white/70 px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#161311] backdrop-blur transition hover:bg-white"
           >
             Back to Home
