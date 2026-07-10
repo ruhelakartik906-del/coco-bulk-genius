@@ -144,28 +144,6 @@ export function CocoBulkOrdersPage() {
 
   return (
     <main className="min-h-dvh bg-[#F5F2EC] text-[#161311] font-sans">
-      {/* NAV */}
-      <header className="sticky top-0 z-40 border-b border-black/5 bg-[#F5F2EC]/85 backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 py-4 sm:px-8">
-          <a href="/" className="flex items-center gap-2.5">
-            <img src={cocoLogo.url} alt="COCO" className="h-8 w-8 rounded-md object-contain" />
-            <span className="text-lg font-semibold tracking-tight">COCO</span>
-          </a>
-          <div className="hidden items-center gap-8 text-[13px] font-medium text-[#4a4640] md:flex">
-            <a href="#pricing" className="hover:text-black">Pricing</a>
-            <a href="#performance" className="hover:text-black">Performance</a>
-            <a href="#industries" className="hover:text-black">Industries</a>
-            <a href="#enquiry" className="hover:text-black">Contact</a>
-          </div>
-          <button
-            onClick={scrollToForm}
-            className="inline-flex items-center gap-1.5 rounded-full bg-[#161311] px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-black"
-          >
-            Get Quote <ArrowRight className="h-3.5 w-3.5" />
-          </button>
-        </div>
-      </header>
-
       <div className="mx-auto w-full max-w-[1280px] px-5 sm:px-8">
         {/* HERO */}
         <section className="relative grid gap-10 pt-14 pb-20 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-24 lg:pb-28">
@@ -174,6 +152,9 @@ export function CocoBulkOrdersPage() {
           <div className="pointer-events-none absolute right-0 top-24 -z-0 h-96 w-96 rounded-full bg-gradient-to-br from-[#d4e4dc] to-transparent opacity-60 blur-3xl" />
 
           <div className="relative">
+            <a href="/" className="mb-8 inline-flex items-center justify-center rounded-2xl bg-white/60 p-3 shadow-sm backdrop-blur">
+              <img src={cocoLogo.url} alt="COCO" className="h-16 w-16 rounded-md object-contain sm:h-20 sm:w-20" />
+            </a>
             <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3.5 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#5b5650] backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
               B2B · Volume Orders
@@ -183,7 +164,7 @@ export function CocoBulkOrdersPage() {
               <span className="italic text-[#5b5650]">at scale.</span>
             </h1>
             <p className="mt-6 max-w-xl text-[15.5px] leading-[1.7] text-[#4a4640]">
-              Equip your workspace, hotel, hospital or facility with certified COCO air
+              Equip your workspace, hotel, hospital or facility with certified air
               purification. Volume pricing, dedicated account manager, and rapid
               PAN-India dispatch — engineered for institutional scale.
             </p>
@@ -473,14 +454,10 @@ export function CocoBulkOrdersPage() {
       {/* FOOTER */}
       <footer className="border-t border-black/10 bg-[#161311] text-white">
         <div className="mx-auto flex w-full max-w-[1280px] flex-col items-start justify-between gap-6 px-5 py-10 sm:flex-row sm:items-center sm:px-8">
-          <div className="flex items-center gap-2.5">
-            <img src={cocoLogo.url} alt="COCO" className="h-8 w-8 rounded object-contain bg-white p-1" />
-            <div>
-              <div className="text-base font-semibold">COCO</div>
-              <div className="text-[11px] uppercase tracking-[0.2em] text-white/50">Premium Air Purifiers</div>
-            </div>
+          <div className="flex items-center gap-3">
+            <img src={cocoLogo.url} alt="COCO" className="h-12 w-12 rounded-md object-contain bg-white p-1.5" />
           </div>
-          <div className="text-[12px] text-white/60">© {new Date().getFullYear()} COCO. All rights reserved.</div>
+          <div className="text-[12px] text-white/60">© {new Date().getFullYear()} All rights reserved.</div>
         </div>
       </footer>
 
