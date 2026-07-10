@@ -454,14 +454,10 @@ export function CocoBulkOrdersPage() {
       {/* FOOTER */}
       <footer className="border-t border-black/10 bg-[#161311] text-white">
         <div className="mx-auto flex w-full max-w-[1280px] flex-col items-start justify-between gap-6 px-5 py-10 sm:flex-row sm:items-center sm:px-8">
-          <div className="flex items-center gap-2.5">
-            <img src={cocoLogo.url} alt="COCO" className="h-8 w-8 rounded object-contain bg-white p-1" />
-            <div>
-              <div className="text-base font-semibold">COCO</div>
-              <div className="text-[11px] uppercase tracking-[0.2em] text-white/50">Premium Air Purifiers</div>
-            </div>
+          <div className="flex items-center gap-3">
+            <img src={cocoLogo.url} alt="COCO" className="h-12 w-12 rounded-md object-contain bg-white p-1.5" />
           </div>
-          <div className="text-[12px] text-white/60">© {new Date().getFullYear()} COCO. All rights reserved.</div>
+          <div className="text-[12px] text-white/60">© {new Date().getFullYear()} All rights reserved.</div>
         </div>
       </footer>
 
