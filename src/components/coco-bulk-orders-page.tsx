@@ -150,18 +150,12 @@ export function CocoBulkOrdersPage() {
           <a href="/" className="flex items-center gap-3">
             <img src={cocoLogo.url} alt="COCO" className="h-11 w-11 rounded-md object-contain sm:h-14 sm:w-14" />
           </a>
-          <div className="hidden items-center gap-8 text-[13px] font-medium text-[#4a4640] md:flex">
-            <a href="#pricing" className="hover:text-black">Pricing</a>
-            <a href="#performance" className="hover:text-black">Performance</a>
-            <a href="#industries" className="hover:text-black">Industries</a>
-            <a href="#enquiry" className="hover:text-black">Contact</a>
-          </div>
-          <button
-            onClick={scrollToForm}
-            className="inline-flex items-center gap-1.5 rounded-full bg-[#161311] px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-black"
+          <a
+            href="/"
+            className="inline-flex items-center gap-2 rounded-full border border-black/15 bg-white/70 px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#161311] backdrop-blur transition hover:bg-white"
           >
-            Get Quote <ArrowRight className="h-3.5 w-3.5" />
-          </button>
+            Back to Home
+          </a>
         </div>
       </header>
 
