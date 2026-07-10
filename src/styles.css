@@ -202,3 +202,9 @@
 @utility eyebrow {
   @apply inline-flex items-center text-xs font-semibold uppercase tracking-[0.34em] text-muted-foreground;
 }
+
+@layer base {
+  * {
+    border-radius: 3px !important;
+  }
+}
