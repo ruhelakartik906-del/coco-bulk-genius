@@ -144,28 +144,6 @@ export function CocoBulkOrdersPage() {
 
   return (
     <main className="min-h-dvh bg-[#F5F2EC] text-[#161311] font-sans">
-      {/* NAV */}
-      <header className="sticky top-0 z-40 border-b border-black/5 bg-[#F5F2EC]/85 backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 py-4 sm:px-8">
-          <a href="/" className="flex items-center gap-2.5">
-            <img src={cocoLogo.url} alt="COCO" className="h-8 w-8 rounded-md object-contain" />
-            <span className="text-lg font-semibold tracking-tight">COCO</span>
-          </a>
-          <div className="hidden items-center gap-8 text-[13px] font-medium text-[#4a4640] md:flex">
-            <a href="#pricing" className="hover:text-black">Pricing</a>
-            <a href="#performance" className="hover:text-black">Performance</a>
-            <a href="#industries" className="hover:text-black">Industries</a>
-            <a href="#enquiry" className="hover:text-black">Contact</a>
-          </div>
-          <button
-            onClick={scrollToForm}
-            className="inline-flex items-center gap-1.5 rounded-full bg-[#161311] px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-black"
-          >
-            Get Quote <ArrowRight className="h-3.5 w-3.5" />
-          </button>
-        </div>
-      </header>
-
       <div className="mx-auto w-full max-w-[1280px] px-5 sm:px-8">
         {/* HERO */}
         <section className="relative grid gap-10 pt-14 pb-20 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-24 lg:pb-28">
