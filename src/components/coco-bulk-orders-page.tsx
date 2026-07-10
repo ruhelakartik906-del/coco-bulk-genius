@@ -24,7 +24,7 @@ import cocoLogo from "@/assets/coco-logo.avif.asset.json";
 import heroPurifier from "@/assets/coco-smart-white.png.asset.json";
 import smartLightWood from "@/assets/coco-smart-light-wood.png.asset.json";
 import smartDarkWood from "@/assets/coco-smart-dark-wood.png.asset.json";
-import circularPurifier from "@/assets/coco-circular-purifier.png.asset.json";
+import circularPurifier from "@/assets/coco-air-purifier-hero.webp.asset.json";
 
 const enquirySchema = z.object({
   fullName: z.string().trim().min(2, "Required").max(100),
