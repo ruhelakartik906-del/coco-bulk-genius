@@ -11,11 +11,11 @@ export const Route = createFileRoute("/")({
         content:
           "Request premium bulk pricing for COCO air purifiers across offices, hotels, healthcare, education and institutional spaces.",
       },
-      { property: "og:title", content: "COCO Bulk Orders" },
+      { property: "og:title", content: "COCO Bulk Orders | Premium B2B Air Purifiers" },
       {
         property: "og:description",
         content:
-          "Premium B2B bulk enquiries for COCO air purifiers with rapid quote turnaround.",
+          "Request premium bulk pricing for COCO air purifiers across offices, hotels, healthcare, education and institutional spaces.",
       },
     ],
   }),
