@@ -143,7 +143,7 @@ export function CocoBulkOrdersPage() {
   };
 
   return (
-    <main className="min-h-dvh bg-[#F5F2EC] text-[#161311]" style={{ fontFamily: "Poppins, ui-sans-serif, system-ui, sans-serif" }}>
+    <main className="min-h-dvh bg-[#F5F2EC] text-[#161311] font-sans">
       {/* NAV */}
       <header className="sticky top-0 z-40 border-b border-black/5 bg-[#F5F2EC]/85 backdrop-blur-xl">
         <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 py-4 sm:px-8">
