@@ -82,8 +82,8 @@ const infoRows: Array<[string, string, typeof MapPin]> = [
   ["Dispatch", "Ex-Works Ahmedabad", MapPin],
   ["Logistics", "Pan India delivery", Truck],
   ["Warranty", "2 Years", Award],
-  ["Email", "hello@coco.in", Mail],
-  ["Phone", "+91 90000 00000", Phone],
+  ["Email", "cocoairpurifier@gmail.com", Mail],
+  ["Phone", "+91 7863051739", Phone],
 ];
 
 const modelOptions = [
