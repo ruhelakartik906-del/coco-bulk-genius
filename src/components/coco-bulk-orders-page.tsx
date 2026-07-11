@@ -29,7 +29,7 @@ import desktopPurifierAsset from "@/assets/coco-desktop-purifier.webp.asset.json
 
 // Assets are served from Lovable's CDN. When deployed outside Lovable (e.g. Vercel),
 // the relative `/__l5e/...` path doesn't exist, so we prefix with the absolute CDN host.
-const ASSET_CDN = "https://cdn.lovable.dev";
+const ASSET_CDN = "https://coco-bulk-genius.lovable.app";
 const toAbsolute = (a: { url: string }) => (a.url.startsWith("http") ? a.url : `${ASSET_CDN}${a.url}`);
 const cocoLogo = { url: toAbsolute(cocoLogoAsset) };
 const heroPurifier = { url: toAbsolute(heroPurifierAsset) };
