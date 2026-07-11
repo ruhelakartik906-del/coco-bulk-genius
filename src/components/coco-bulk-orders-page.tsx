@@ -1,20 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  ArrowRight,
-  Award,
-  Check,
-  Cpu,
-  Gauge,
-  Leaf,
-  Mail,
-  MapPin,
-  Phone,
-  ShieldCheck,
-  Sparkles,
-  Truck,
-  Wind,
-} from "lucide-react";
+import { ArrowRight, Award, Check, Mail, Phone, Truck } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -53,28 +39,12 @@ const enquirySchema = z.object({
 
 type EnquiryValues = z.infer<typeof enquirySchema>;
 
-const stats = [
-  { value: "60%", label: "Volume Savings", sub: "on 500+ orders" },
-  { value: "500+", label: "Units / Order", sub: "flexible MOQs" },
-  { value: "PAN India", label: "Delivery", sub: "ex-Ahmedabad" },
-  { value: "24 Hrs", label: "Quote Response", sub: "dedicated manager" },
-];
-
 const pricingRows = [
-  { no: "01", model: "SMART Purifier", colour: "White", mrp: "₹24,999", discount: "35%", p1: "₹22,499", p50: "₹19,999", p100: "₹17,999", p500: "₹16,249", img: heroPurifier.url },
-  { no: "02", model: "SMART Purifier", colour: "Light Wood", mrp: "₹26,999", discount: "38%", p1: "₹24,299", p50: "₹21,599", p100: "₹19,439", p500: "₹16,739", img: smartLightWood.url },
-  { no: "03", model: "SMART Purifier", colour: "Dark Wood", mrp: "₹26,999", discount: "38%", p1: "₹24,299", p50: "₹21,599", p100: "₹19,439", p500: "₹16,739", img: smartDarkWood.url },
-  { no: "04", model: "Circular Purifier", colour: "White", mrp: "₹18,999", discount: "40%", p1: "₹16,999", p50: "₹14,999", p100: "₹13,299", p500: "₹11,399", img: circularPurifier.url },
-  { no: "05", model: "Desktop Purifier", colour: "White", mrp: "₹9,999", discount: "45%", p1: "₹8,999", p50: "₹7,499", p100: "₹6,499", img: desktopPurifier.url, p500: "₹5,499" },
-];
-
-const features = [
-  { icon: ShieldCheck, label: "HEPA H13", desc: "99.97% at 0.3μm" },
-  { icon: Sparkles, label: "UV Sterilization", desc: "Kills bacteria & virus" },
-  { icon: Leaf, label: "Energy Efficient", desc: "Under 35W usage" },
-  { icon: Wind, label: "Smart Airflow", desc: "360° coverage" },
-  { icon: Gauge, label: "Real-Time AQI", desc: "Live sensor display" },
-  { icon: Cpu, label: "AI Purification", desc: "Adaptive modes" },
+  { no: "01", model: "SMART Air Purifier", colour: "White", mrp: "₹19,999", discount: "up to 45%", p1: "₹11,999", p50: "₹11,666", p100: "₹11,333", p500: "₹10,999", img: heroPurifier.url },
+  { no: "02", model: "SMART Air Purifier", colour: "Light Wood", mrp: "₹22,999", discount: "up to 52%", p1: "₹13,999", p50: "₹13,333", p100: "₹12,999", p500: "₹11,999", img: smartLightWood.url },
+  { no: "03", model: "SMART Air Purifier", colour: "Dark Wood", mrp: "₹22,999", discount: "up to 52%", p1: "₹13,999", p50: "₹13,333", p100: "₹12,999", p500: "₹11,999", img: smartDarkWood.url },
+  { no: "04", model: "Circular Air Purifier", colour: "White", mrp: "₹18,999", discount: "up to 58%", p1: "₹8,999", p50: "₹8,666", p100: "₹8,333", p500: "₹7,999", img: circularPurifier.url },
+  { no: "05", model: "Desktop Air Purifier", colour: "White", mrp: "₹9,999", discount: "up to 60%", p1: "₹4,999", p50: "₹4,499", p100: "₹4,411", p500: "₹3,999", img: desktopPurifier.url },
 ];
 
 const industries = [
@@ -88,10 +58,9 @@ const industries = [
   "Co-working Spaces",
 ];
 
-const infoRows: Array<[string, string, typeof MapPin]> = [
-  ["Dispatch", "Ex-Works Ahmedabad", MapPin],
+const infoRows: Array<[string, string, typeof Truck]> = [
   ["Logistics", "Pan India delivery", Truck],
-  ["Warranty", "2 Years", Award],
+  ["Warranty", "1 Year", Award],
   ["Email", "cocoairpurifier@gmail.com", Mail],
   ["Phone", "+91 7863051739", Phone],
 ];
@@ -117,8 +86,6 @@ const industryOptions = [
 ];
 
 const timelineOptions = ["Within 1 week", "1–2 weeks", "2–4 weeks", "1–3 months", "Flexible"];
-
-const clients = ["Taj Group", "Infosys", "Apollo", "ITC", "Zomato", "Reliance"];
 
 export function CocoBulkOrdersPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -157,10 +124,6 @@ export function CocoBulkOrdersPage() {
     setSubmitted(true);
   };
 
-  const scrollToForm = () => {
-    document.getElementById("enquiry")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
     <main className="min-h-dvh bg-[#F5F2EC] text-[#161311] font-sans">
       {/* NAV */}
@@ -181,203 +144,8 @@ export function CocoBulkOrdersPage() {
       </header>
 
       <div className="mx-auto w-full max-w-[1280px] px-5 sm:px-8">
-        {/* HERO */}
-        <section className="relative grid gap-10 pt-14 pb-20 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-24 lg:pb-28">
-          {/* decorative rings */}
-          <div className="pointer-events-none absolute -left-32 top-10 -z-0 h-72 w-72 rounded-full bg-gradient-to-br from-[#e8dcc4] to-transparent opacity-70 blur-3xl" />
-          <div className="pointer-events-none absolute right-0 top-24 -z-0 h-96 w-96 rounded-full bg-gradient-to-br from-[#d4e4dc] to-transparent opacity-60 blur-3xl" />
-
-          <div className="relative">
-            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3.5 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#5b5650] backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              B2B · Volume Orders
-            </span>
-            <h1 className="mt-6 text-[42px] leading-[1.02] tracking-tight sm:text-[56px] lg:text-[76px]" style={{ fontWeight: 700, letterSpacing: "-0.03em" }}>
-              Cleaner air, <br className="hidden sm:block" />
-              <span className="italic text-[#5b5650]">at scale.</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-[15.5px] leading-[1.7] text-[#4a4640]">
-              Equip your workspace, hotel, hospital or facility with certified air
-              purification. Volume pricing, dedicated account manager, and rapid
-              PAN-India dispatch — engineered for institutional scale.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <button
-                onClick={scrollToForm}
-                className="inline-flex items-center gap-2 rounded-full bg-[#161311] px-7 py-3.5 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-black"
-              >
-                Request a Quote <ArrowRight className="h-4 w-4" />
-              </button>
-              <a
-                href="#pricing"
-                className="inline-flex items-center gap-2 rounded-full border border-black/15 bg-white/70 px-7 py-3.5 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-[#161311] backdrop-blur transition hover:bg-white"
-              >
-                View Pricing
-              </a>
-            </div>
-
-            {/* trust bar */}
-            <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <span className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#8a8275]">
-                Trusted By
-              </span>
-              <div className="flex flex-wrap gap-x-5 gap-y-2 text-[13px] font-medium text-[#5b5650]">
-                {clients.map((c) => (
-                  <span key={c}>{c}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] bg-gradient-to-br from-[#eae3d3] via-[#f0ebde] to-[#dbd3c0] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.25)]">
-              <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, #000 1px, transparent 0)", backgroundSize: "18px 18px" }} />
-              <img
-                src={heroPurifier.url}
-                alt="COCO Smart Air Purifier"
-                className="absolute inset-0 h-full w-full object-contain p-10"
-              />
-              {/* floating stat card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="absolute bottom-6 left-6 rounded-2xl border border-white/60 bg-white/85 px-5 py-4 backdrop-blur-md shadow-lg"
-              >
-                <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8a8275]">Live AQI</div>
-                <div className="mt-1 flex items-baseline gap-1">
-                  <span className="text-3xl font-semibold tracking-tight">12</span>
-                  <span className="text-xs font-medium text-emerald-600">Excellent</span>
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.55, duration: 0.6 }}
-                className="absolute right-6 top-6 rounded-full border border-white/60 bg-white/85 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] backdrop-blur-md shadow"
-              >
-                HEPA H13 · Certified
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* STATS */}
-        <section className="grid grid-cols-2 gap-3 pb-20 sm:gap-4 lg:grid-cols-4">
-          {stats.map((s, i) => (
-            <motion.div
-              key={s.label}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="group relative overflow-hidden rounded-2xl border border-black/10 bg-white px-5 py-6 sm:px-7 sm:py-8"
-            >
-              <div className="text-3xl tracking-tight sm:text-4xl" style={{ fontWeight: 700, letterSpacing: "-0.02em" }}>
-                {s.value}
-              </div>
-              <div className="mt-2 text-[10.5px] font-semibold uppercase tracking-[0.2em] text-[#161311]">{s.label}</div>
-              <div className="mt-1 text-[12px] text-[#8a8275]">{s.sub}</div>
-              <div className="absolute -right-6 -top-6 h-16 w-16 rounded-full bg-[#f0ebde] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-            </motion.div>
-          ))}
-        </section>
-
-        {/* PRICING */}
-        <section id="pricing" className="pb-24 scroll-mt-24">
-          <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#8a8275]">Pricing</p>
-              <h2 className="mt-3 text-3xl tracking-tight sm:text-5xl" style={{ fontWeight: 700, letterSpacing: "-0.02em" }}>
-                Volume Pricing
-              </h2>
-              <p className="mt-3 max-w-lg text-[14px] text-[#5b5650]">Transparent tier-based pricing. The more you order, the more you save.</p>
-            </div>
-            <div className="hidden gap-2 sm:flex">
-              {["Ex-GST", "Free Delivery 100+", "2 Yr Warranty"].map((t) => (
-                <span key={t} className="rounded-full border border-black/10 bg-white px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#5b5650]">
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-[0_20px_60px_-40px_rgba(0,0,0,0.3)]">
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[900px] text-left text-sm">
-                <thead className="bg-[#161311] text-white">
-                  <tr>
-                    {["No.", "Product", "Colour", "MRP", "Save", "1 Unit", "50 Units", "100 Units", "500 Units"].map((h) => (
-                      <th key={h} className="px-5 py-4 text-[10.5px] font-semibold uppercase tracking-[0.16em]">
-                        {h}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {pricingRows.map((r, i) => (
-                    <tr key={r.no} className={`transition hover:bg-[#faf7f0] ${i === pricingRows.length - 1 ? "" : "border-b border-black/5"}`}>
-                      <td className="px-5 py-5 text-[#8a8275]">{r.no}</td>
-                      <td className="px-5 py-5">
-                        <div className="flex items-center gap-3">
-                          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#f5f0e4]">
-                            <img src={r.img} alt="" className="h-9 w-9 object-contain" />
-                          </div>
-                          <span className="font-medium">{r.model}</span>
-                        </div>
-                      </td>
-                      <td className="px-5 py-5 text-[#5b5650]">{r.colour}</td>
-                      <td className="px-5 py-5 text-[#8a8275] line-through">{r.mrp}</td>
-                      <td className="px-5 py-5">
-                        <span className="inline-flex rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-emerald-700 ring-1 ring-emerald-200">
-                          {r.discount}
-                        </span>
-                      </td>
-                      <td className="px-5 py-5">{r.p1}</td>
-                      <td className="px-5 py-5">{r.p50}</td>
-                      <td className="px-5 py-5">{r.p100}</td>
-                      <td className="px-5 py-5 font-semibold">{r.p500}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        {/* PERFORMANCE */}
-        <section id="performance" className="pb-24 scroll-mt-24">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#8a8275]">Performance</p>
-            <h2 className="mt-4 text-3xl tracking-tight sm:text-5xl" style={{ fontWeight: 700, letterSpacing: "-0.02em" }}>
-              Engineered for real air.
-            </h2>
-            <p className="mt-5 text-[15px] leading-7 text-[#5b5650]">
-              Medical-grade HEPA H13 filtration combined with intelligent sensors.
-              Trusted by offices, hotels, clinics and homes across the country.
-            </p>
-          </div>
-          <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.label}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="group rounded-2xl border border-black/10 bg-white p-5 text-center transition hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f5f0e4] transition group-hover:bg-[#161311] group-hover:text-white">
-                  <f.icon className="h-6 w-6" strokeWidth={1.5} />
-                </div>
-                <div className="mt-4 text-[12.5px] font-semibold uppercase tracking-[0.14em]">{f.label}</div>
-                <div className="mt-1 text-[11.5px] text-[#8a8275]">{f.desc}</div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* TWO COLUMN */}
-        <section id="industries" className="grid gap-10 pb-24 scroll-mt-24 lg:grid-cols-2 lg:gap-14">
+        {/* FORM + INDUSTRIES */}
+        <section className="grid gap-10 pt-14 pb-20 lg:grid-cols-2 lg:gap-14 lg:pt-20">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#8a8275]">Industries</p>
             <h2 className="mt-4 text-4xl tracking-tight sm:text-5xl" style={{ fontWeight: 700, letterSpacing: "-0.02em" }}>
@@ -480,6 +248,60 @@ export function CocoBulkOrdersPage() {
                 </button>
               </div>
             </form>
+          </div>
+        </section>
+
+        {/* PRICING */}
+        <section id="pricing" className="pb-24 scroll-mt-24">
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#8a8275]">Pricing</p>
+              <h2 className="mt-3 text-3xl tracking-tight sm:text-5xl" style={{ fontWeight: 700, letterSpacing: "-0.02em" }}>
+                Volume Pricing
+              </h2>
+              <p className="mt-3 max-w-lg text-[14px] text-[#5b5650]">Transparent tier-based pricing. The more you order, the more you save.</p>
+            </div>
+          </div>
+          <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-[0_20px_60px_-40px_rgba(0,0,0,0.3)]">
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[900px] text-left text-sm">
+                <thead className="bg-[#161311] text-white">
+                  <tr>
+                    {["Sr. No.", "Model", "Colour", "Price (Rs./Unit)", "Discount", "1 Unit Price (Rs.)", "50 Units Price (Rs.)", "100 Units Price (Rs.)", "500 Units Price (Rs.)"].map((h) => (
+                      <th key={h} className="px-5 py-4 text-[10.5px] font-semibold uppercase tracking-[0.16em]">
+                        {h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {pricingRows.map((r, i) => (
+                    <tr key={r.no} className={`transition hover:bg-[#faf7f0] ${i === pricingRows.length - 1 ? "" : "border-b border-black/5"}`}>
+                      <td className="px-5 py-5 text-[#8a8275]">{r.no}</td>
+                      <td className="px-5 py-5">
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#f5f0e4]">
+                            <img src={r.img} alt="" className="h-9 w-9 object-contain" />
+                          </div>
+                          <span className="font-medium">{r.model}</span>
+                        </div>
+                      </td>
+                      <td className="px-5 py-5 text-[#5b5650]">{r.colour}</td>
+                      <td className="px-5 py-5 text-[#8a8275] line-through">{r.mrp}</td>
+                      <td className="px-5 py-5">
+                        <span className="inline-flex rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-emerald-700 ring-1 ring-emerald-200">
+                          {r.discount}
+                        </span>
+                      </td>
+                      <td className="px-5 py-5">{r.p1}</td>
+                      <td className="px-5 py-5">{r.p50}</td>
+                      <td className="px-5 py-5">{r.p100}</td>
+                      <td className="px-5 py-5 font-semibold">{r.p500}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
       </div>
