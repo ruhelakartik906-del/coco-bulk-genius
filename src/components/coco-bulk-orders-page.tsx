@@ -182,10 +182,7 @@ export function CocoBulkOrdersPage() {
 
           {/* FORM */}
           <div id="enquiry" className="scroll-mt-24 rounded-3xl border border-black/10 bg-white p-6 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.35)] sm:p-10">
-            <div className="flex items-center gap-2">
-              <img src={cocoLogo.url} alt="" className="h-6 w-6 rounded object-contain" />
-              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#8a8275]">Enquiry</p>
-            </div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#8a8275]">Enquiry</p>
             <h2 className="mt-3 text-3xl tracking-tight sm:text-4xl" style={{ fontWeight: 700, letterSpacing: "-0.02em" }}>
               Request a Quote
             </h2>
