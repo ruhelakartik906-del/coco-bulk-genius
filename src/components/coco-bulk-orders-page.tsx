@@ -160,7 +160,7 @@ export function CocoBulkOrdersPage() {
       <header className="sticky top-0 z-40 border-b border-black/5 bg-[#F5F2EC]/85 backdrop-blur-xl">
         <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 py-4 sm:px-8">
           <a href="/" className="flex items-center gap-3">
-            <img src={cocoLogo.url} alt="COCO" className="h-11 w-11 rounded-md object-contain sm:h-14 sm:w-14" />
+            <img src={cocoLogo.url} alt="COCO" className="h-16 w-16 rounded-md object-contain sm:h-20 sm:w-20" />
           </a>
           <a
             href="https://www.cocoairpurifier.com"
