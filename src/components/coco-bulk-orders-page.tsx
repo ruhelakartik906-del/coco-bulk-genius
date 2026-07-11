@@ -143,8 +143,21 @@ export function CocoBulkOrdersPage() {
     return () => clearTimeout(t);
   }, [submitted, count, navigate]);
 
-  const onSubmit = async (_values: EnquiryValues) => {
-    await new Promise((r) => setTimeout(r, 800));
+  const onSubmit = async (values: EnquiryValues) => {
+    try {
+      await fetch("https://formsubmit.co/ajax/cocoairpurifier@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `New COCO Bulk Enquiry from ${values.fullName}`,
+          _template: "table",
+          _captcha: "false",
+          ...values,
+        }),
+      });
+    } catch (e) {
+      console.error("Form submission failed", e);
+    }
     reset();
     setCount(5);
     setSubmitted(true);
