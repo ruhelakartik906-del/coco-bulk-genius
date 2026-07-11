@@ -1,5 +1,4 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
@@ -122,9 +121,7 @@ const timelineOptions = ["Within 1 week", "1–2 weeks", "2–4 weeks", "1–3 m
 const clients = ["Taj Group", "Infosys", "Apollo", "ITC", "Zomato", "Reliance"];
 
 export function CocoBulkOrdersPage() {
-  const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
-  const [count, setCount] = useState(5);
 
   const {
     register,
@@ -135,13 +132,11 @@ export function CocoBulkOrdersPage() {
 
   useEffect(() => {
     if (!submitted) return;
-    if (count <= 0) {
-      navigate({ to: "/" });
-      return;
-    }
-    const t = setTimeout(() => setCount((c) => c - 1), 1000);
+    const t = setTimeout(() => {
+      window.location.href = "https://www.cocoairpurifier.com";
+    }, 2000);
     return () => clearTimeout(t);
-  }, [submitted, count, navigate]);
+  }, [submitted]);
 
   const onSubmit = async (values: EnquiryValues) => {
     try {
@@ -159,7 +154,6 @@ export function CocoBulkOrdersPage() {
       console.error("Form submission failed", e);
     }
     reset();
-    setCount(5);
     setSubmitted(true);
   };
 
@@ -509,13 +503,10 @@ export function CocoBulkOrdersPage() {
                 <Check className="h-6 w-6" strokeWidth={2.5} />
               </div>
               <h3 className="mt-6 text-3xl tracking-tight" style={{ fontWeight: 700, letterSpacing: "-0.02em" }}>
-                Quote Submitted
+                Form Submitted
               </h3>
               <p className="mt-3 text-sm text-[#5b5650]">Thank you for your enquiry.</p>
-              <p className="mt-6 text-xs uppercase tracking-[0.22em] text-[#8a8275]">Redirecting in</p>
-              <div className="mt-2 text-5xl tabular-nums" style={{ fontWeight: 700, letterSpacing: "-0.02em" }}>
-                {count}
-              </div>
+              <p className="mt-6 text-xs uppercase tracking-[0.22em] text-[#8a8275]">Redirecting…</p>
             </motion.div>
           </motion.div>
         )}
