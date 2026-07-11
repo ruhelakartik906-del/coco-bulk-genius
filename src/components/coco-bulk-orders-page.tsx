@@ -20,12 +20,23 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import cocoLogo from "@/assets/coco-logo.avif.asset.json";
-import heroPurifier from "@/assets/coco-smart-white.png.asset.json";
-import smartLightWood from "@/assets/coco-smart-light-wood.png.asset.json";
-import smartDarkWood from "@/assets/coco-smart-dark-wood.png.asset.json";
-import circularPurifier from "@/assets/coco-air-purifier-hero.webp.asset.json";
-import desktopPurifier from "@/assets/coco-desktop-purifier.webp.asset.json";
+import cocoLogoAsset from "@/assets/coco-logo.avif.asset.json";
+import heroPurifierAsset from "@/assets/coco-smart-white.png.asset.json";
+import smartLightWoodAsset from "@/assets/coco-smart-light-wood.png.asset.json";
+import smartDarkWoodAsset from "@/assets/coco-smart-dark-wood.png.asset.json";
+import circularPurifierAsset from "@/assets/coco-air-purifier-hero.webp.asset.json";
+import desktopPurifierAsset from "@/assets/coco-desktop-purifier.webp.asset.json";
+
+// Assets are served from Lovable's CDN. When deployed outside Lovable (e.g. Vercel),
+// the relative `/__l5e/...` path doesn't exist, so we prefix with the absolute CDN host.
+const ASSET_CDN = "https://cdn.lovable.dev";
+const toAbsolute = (a: { url: string }) => (a.url.startsWith("http") ? a.url : `${ASSET_CDN}${a.url}`);
+const cocoLogo = { url: toAbsolute(cocoLogoAsset) };
+const heroPurifier = { url: toAbsolute(heroPurifierAsset) };
+const smartLightWood = { url: toAbsolute(smartLightWoodAsset) };
+const smartDarkWood = { url: toAbsolute(smartDarkWoodAsset) };
+const circularPurifier = { url: toAbsolute(circularPurifierAsset) };
+const desktopPurifier = { url: toAbsolute(desktopPurifierAsset) };
 
 const enquirySchema = z.object({
   fullName: z.string().trim().min(2, "Required").max(100),
